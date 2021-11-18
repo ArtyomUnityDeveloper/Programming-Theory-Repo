@@ -18,6 +18,11 @@ public class Player : MonoBehaviour,
     protected NavMeshAgent m_Agent;
     protected Location m_Target;
 
+    public int MaxAmountTransported = 20;
+
+    private Location m_CurrentTransportTarget;
+    private Location.InventoryEntry m_Transporting = new Location.InventoryEntry();
+
     protected void Awake()
     {
         m_Agent = GetComponent<NavMeshAgent>();
@@ -40,7 +45,7 @@ public class Player : MonoBehaviour,
             if (distance < 2.0f)
             {
                 m_Agent.isStopped = true;
-                //BuildingInRange();
+                BuildingInRange();
             }
         }
     }
@@ -71,7 +76,30 @@ public class Player : MonoBehaviour,
     /// </summary>
 
 
-    //protected abstract void BuildingInRange();        // !!!!!! Rewrite it !!!!!!!!!
+    protected void BuildingInRange()
+    {
+        if (m_Target == FriendlyLocation.Instance)
+        {
+            //we arrive at the base, unload!
+            if (m_Transporting.Count > 0)
+                m_Target.AddItem(m_Transporting.ResourceId, m_Transporting.Count);
+
+            //we go back to the building we came from
+            GoTo(m_CurrentTransportTarget);
+            m_Transporting.Count = 0;
+            m_Transporting.ResourceId = "";
+        }
+        else
+        {
+            if (m_Target.Inventory.Count > 0)
+            {
+                m_Transporting.ResourceId = m_Target.Inventory[0].ResourceId;
+                m_Transporting.Count = m_Target.GetItem(m_Transporting.ResourceId, MaxAmountTransported);
+                m_CurrentTransportTarget = m_Target;
+                GoTo(FriendlyLocation.Instance);
+            }
+        }
+    }
 
 
 
@@ -80,16 +108,17 @@ public class Player : MonoBehaviour,
     //override them to offer their own data to it.
     public virtual string GetName()
     {
-        return "Player";
+        return "Player Armoured Vehicle";
     }
 
     public virtual string GetData()
     {
-        return "";
+        return $"Can transport up to {MaxAmountTransported}";
     }
 
     public virtual void GetContent(ref List<Location.InventoryEntry> content)
     {
-
+        if (m_Transporting.Count > 0)
+            content.Add(m_Transporting);
     }
 }

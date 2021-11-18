@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7086404399945904663}
   - component: {fileID: 2201238888212331713}
+  - component: {fileID: 1060624928}
   m_Layer: 0
   m_Name: Settlement _Torfyaniki_
   m_TagString: Untagged
@@ -46,6 +47,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1060624928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7086404399945904662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6b367ff83246f445968308f72a80092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InventorySpace: -1
+  items:
+  - {fileID: 11400000, guid: 0ed0ab28cf3054e498e90d0fb7bce7bb, type: 2}
+  - {fileID: 11400000, guid: f4f96f9fbda8b5e49a1724684cfb3274, type: 2}
+  numberOfItems: 64000000c8000000
+  locationDescription: 'Before the disaster, peat workers lived here. The last survivors
+    left the site 190 days ago.
+
+    You can pick up wood and books from the location.
+    Zombies live here from time to time.'
 --- !u!1001 &7086404399596504580
 PrefabInstance:
   m_ObjectHideFlags: 0
