@@ -69,6 +69,8 @@ MonoBehaviour:
 
     You can pick up wood and books from the location.
     Zombies live here from time to time.'
+  amountOfZombies: 0400000002000000
+  strengthOfZombies: 0100000002000000
 --- !u!1001 &7086404399596504580
 PrefabInstance:
   m_ObjectHideFlags: 0

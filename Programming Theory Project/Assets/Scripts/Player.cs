@@ -80,24 +80,40 @@ public class Player : MonoBehaviour,
     {
         if (m_Target == FriendlyLocation.Instance)
         {
-            //we arrive at the base, unload!
-            if (m_Transporting.Count > 0)
-                m_Target.AddItem(m_Transporting.ResourceId, m_Transporting.Count);
-
-            //we go back to the building we came from
-            GoTo(m_CurrentTransportTarget);
-            m_Transporting.Count = 0;
-            m_Transporting.ResourceId = "";
+            UnloadAtTheBaseAndBackToPreviousLocation();
         }
         else
         {
-            if (m_Target.Inventory.Count > 0)
-            {
-                m_Transporting.ResourceId = m_Target.Inventory[0].ResourceId;
-                m_Transporting.Count = m_Target.GetItem(m_Transporting.ResourceId, MaxAmountTransported);
-                m_CurrentTransportTarget = m_Target;
-                GoTo(FriendlyLocation.Instance);
-            }
+            CheckTargetLocationInventoryAndTakeResources();
+        }
+    }
+
+
+
+
+    //ABSTRACTION
+    private void UnloadAtTheBaseAndBackToPreviousLocation()
+    {
+        //we arrive at the base, unload!
+        if (m_Transporting.Count > 0)
+            m_Target.AddItem(m_Transporting.ResourceId, m_Transporting.Count);
+
+        //we go back to the building we came from
+        GoTo(m_CurrentTransportTarget);
+        m_Transporting.Count = 0;
+        m_Transporting.ResourceId = "";
+    }
+
+
+    //ABSTRACTION
+    private void CheckTargetLocationInventoryAndTakeResources()
+    {
+        if (m_Target.Inventory.Count > 0)
+        {
+            m_Transporting.ResourceId = m_Target.Inventory[0].ResourceId;
+            m_Transporting.Count = m_Target.GetItem(m_Transporting.ResourceId, MaxAmountTransported);
+            m_CurrentTransportTarget = m_Target;
+            GoTo(FriendlyLocation.Instance);
         }
     }
 
