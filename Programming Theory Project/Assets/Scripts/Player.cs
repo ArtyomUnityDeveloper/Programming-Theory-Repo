@@ -139,6 +139,11 @@ public class Player : MonoBehaviour,
         }
     }
 
+    public void LeaveLocation()
+    {
+        m_Target = FriendlyLocation.Instance;
+        m_CurrentTransportTarget = m_Target;
+    }
 
 
     //Implementing the IUIInfoContent interface so the UI know it should display the UI when this is clicked on.

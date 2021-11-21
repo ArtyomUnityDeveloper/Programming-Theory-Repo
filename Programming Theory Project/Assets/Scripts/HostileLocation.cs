@@ -23,7 +23,10 @@ public class HostileLocation : Location,
     public int[] strengthOfZombies;
 
     public string[] zombiesInfo;
-    public int totalStrength;
+
+    // ENCAPSULATION
+    public int totalStrength { get; private set; }
+    public int experienceForWin { get; private set; }
 
 
     private void Start()
@@ -31,9 +34,16 @@ public class HostileLocation : Location,
         FillHostileLocationInventory();
         FillZombiesInfo();
         CalculateStrength();
+        CalculateExperienceForWin();
     }
 
-
+    private void CalculateExperienceForWin()
+    {
+        for (int i = 0; i < amountOfZombies.Length; i++)
+        {
+            experienceForWin += amountOfZombies[i] * strengthOfZombies[i] * 100;
+        }
+    }
 
     public override bool IsZombiesHere()
     {
@@ -42,7 +52,7 @@ public class HostileLocation : Location,
         {
             //Debug.Log("Zombies is here");
             var uiZdInfo = gameObject.GetComponentInChildren<UIZombiesDetected.IUIZombiesDetectedContent>();
-            UIZombiesDetected.ZombiesDetectedInstance.ZombiesDetectedPanelFill(uiZdInfo);
+            UIZombiesDetected.ZombiesDetectedInstance.SetNewHostileLocation(uiZdInfo);
             return true;
         }
         else if (amountOfZombies.Length > 0 && strengthOfZombies.Length == 0)
@@ -53,6 +63,10 @@ public class HostileLocation : Location,
         else if (amountOfZombies.Length == 0 && strengthOfZombies.Length > 0)
         {
             Debug.LogError("Set amount of zombies");
+            return false;
+        }
+        else if (amountOfZombies.Length <= 1 && strengthOfZombies.Length <= 1)
+        {
             return false;
         }
         else
@@ -111,6 +125,17 @@ public class HostileLocation : Location,
     public int GetStrength()
     {
         return totalStrength;
+    }
+
+    public HostileLocation GetLocation()
+    {
+        return this;
+    }
+
+    public void KillZombies()
+    {
+        amountOfZombies = new int[] { 0 };
+        strengthOfZombies = new int[] { 0 };
     }
 }
 
