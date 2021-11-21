@@ -98,4 +98,10 @@ public abstract class Location : MonoBehaviour,
     {
         content.AddRange(m_Inventory);
     }
+
+    // POLYMORPHISM
+    public virtual bool IsZombiesHere()
+    {
+        return false;
+    }
 }

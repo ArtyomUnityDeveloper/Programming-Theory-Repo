@@ -59,17 +59,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6b367ff83246f445968308f72a80092, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InventorySpace: -1
-  items:
-  - {fileID: 11400000, guid: 0ed0ab28cf3054e498e90d0fb7bce7bb, type: 2}
-  - {fileID: 11400000, guid: f4f96f9fbda8b5e49a1724684cfb3274, type: 2}
-  numberOfItems: 64000000c8000000
   locationDescription: 'Before the disaster, peat workers lived here. The last survivors
     left the site 190 days ago.
 
     You can pick up wood and books from the location.
     Zombies live here from time to time.'
-  amountOfZombies: 0400000002000000
+  InventorySpace: -1
+  items:
+  - {fileID: 11400000, guid: 0ed0ab28cf3054e498e90d0fb7bce7bb, type: 2}
+  - {fileID: 11400000, guid: f4f96f9fbda8b5e49a1724684cfb3274, type: 2}
+  numberOfItems: 64000000c8000000
+  amountOfZombies: 
   strengthOfZombies: 0100000002000000
 --- !u!1001 &7086404399596504580
 PrefabInstance:

@@ -84,7 +84,29 @@ public class Player : MonoBehaviour,
         }
         else
         {
+            CheckLocationForZombies();
+            // CheckTargetLocationInventoryAndTakeResources(); - method was here, now it called from CheckLocationForZombies()
+        }
+    }
+
+
+
+    // ABSTRACTION
+    private void CheckLocationForZombies()
+    {
+       if (m_Target.IsZombiesHere())
+        {
+            Debug.Log("Need to fight - zombies detected");
+        }
+       else if (m_Target.IsZombiesHere() == false)
+        {
+            Debug.Log("Location is clear - Player can loot it");
             CheckTargetLocationInventoryAndTakeResources();
+        }
+       else
+        {
+            Debug.LogError("Cant check location for zombies");
+            return;
         }
     }
 
