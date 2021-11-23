@@ -15,14 +15,16 @@ public class UIPlayerStats : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Initial player stats on new game session
         playerStatsSO.Experience = 1050;
         playerStatsSO.Health = 100;
-        playerStatsSO.AttackDamage = 20;
+        playerStatsSO.AttackDamage = 10; //20 is basic value
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Keys for test purposes
         if (Input.GetKeyDown("f"))
         {
             StartCoroutine("AddExp");
@@ -49,6 +51,8 @@ public class UIPlayerStats : MonoBehaviour
         playerAttackDamage.text = playerStatsSO.AttackDamage.ToString();
     }
 
+
+    // Coroutines for test purposes
     IEnumerator AddExp()
     {
         playerStatsSO.Experience += 200; 

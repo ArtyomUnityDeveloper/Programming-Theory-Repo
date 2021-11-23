@@ -1431,8 +1431,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.12, y: 0.79, z: 1.23}
-  m_Center: {x: 0, y: 0.5, z: -1.2}
+  m_Size: {x: 1.923677, y: 2.1881714, z: 1.895834}
+  m_Center: {x: 0.054540396, y: 1.1990857, z: -1.1939497}
 --- !u!195 &4082636548107435662
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1469,3 +1469,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 3
   MaxAmountTransported: 20
+  playerStatsSO: {fileID: 11400000, guid: a67a203074da7534fb6081afcd46db4b, type: 2}

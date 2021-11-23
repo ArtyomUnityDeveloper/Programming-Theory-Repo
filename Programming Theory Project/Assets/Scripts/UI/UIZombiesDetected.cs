@@ -1,4 +1,4 @@
-using System;
+//using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,9 +12,12 @@ public class UIZombiesDetected : MonoBehaviour
     Player player;
     public PlayerParameters playerStatsSO;
     private int currentLocationZombiesStrenght;
+    private string currentLocationName;
     private HostileLocation currentLocation;
+    public UIWinPanel winUIReference;
+    public UILosePanel loseUIReference;
 
-    public static UIZombiesDetected ZombiesDetectedInstance { get; private set; }
+    public static UIZombiesDetected ZombiesDetectedInstance;
 
     public interface IUIZombiesDetectedContent
     {
@@ -64,7 +67,8 @@ public class UIZombiesDetected : MonoBehaviour
     private void FillUIZombiesDetectedPanel(IUIZombiesDetectedContent detectedContent)
     {
         gameObject.SetActive(true);
-        titleText.text = detectedContent.GetLocationTitle();
+        currentLocationName = detectedContent.GetLocationTitle();
+        titleText.text = $"At Location " + currentLocationName + " zombies detected:";
 
         string[] zombiesInfo = detectedContent.GetZombiesInfo();
 
@@ -92,22 +96,50 @@ public class UIZombiesDetected : MonoBehaviour
     {
         if (playerStatsSO.AttackDamage > currentLocationZombiesStrenght)
         {
-            Debug.Log("You win!");
+            //Debug.Log("You win!");
             currentLocation.KillZombies();
-            FillUIZombiesDetectedPanel(currentContent);
+            FillUIZombiesDetectedPanel(currentContent); // somewhere here I must fix bug
             gameObject.SetActive(false);
-            player.LeaveLocation();
 
             RewardPlayer();
         }
         else if (playerStatsSO.AttackDamage <= currentLocationZombiesStrenght)
         {
-            Debug.Log("Battle was lost...");
+            //Debug.Log("Battle was lost...");
+            gameObject.SetActive(false);
+            player.LeaveLocation();
+
+            HitPlayer(); 
         }
     }
 
+    private void HitPlayer()
+    {
+        // calculate lost health and consolation prize exp
+        int lostHealth = Random.Range(25, 75);
+        int expPrize = 500;
+
+        // pass values to PlayerStats scriptable object
+        playerStatsSO.Health -= lostHealth;
+        playerStatsSO.Experience += expPrize;
+
+        // show lose UI
+        loseUIReference.ShowLoseUI(currentLocationName, expPrize, lostHealth);
+    }
+
+
+    // ABSTRACTION
     private void RewardPlayer()
     {
-        throw new NotImplementedException(); // Дать игроку опыт и силу атаки
+        // calculate reward
+        int experienceReward = currentLocationZombiesStrenght * 100;
+        int attackDamageReward = 20;
+
+        // reward player
+        playerStatsSO.Experience += experienceReward;
+        playerStatsSO.AttackDamage += attackDamageReward;
+
+        // show win UI
+        winUIReference.ShowWinUI(currentLocationName, experienceReward, attackDamageReward);
     }
 }

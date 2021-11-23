@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 18723460}
   - component: {fileID: 18723462}
   - component: {fileID: 18723461}
+  - component: {fileID: 18723463}
   m_Layer: 5
   m_Name: Lose Panel
   m_TagString: Untagged
@@ -203,6 +204,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 18723459}
   m_CullTransparentMesh: 1
+--- !u!114 &18723463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18723459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df22040ecb2973f4990fdf5f3173773a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  locationNameTitle: {fileID: 437588169}
+  expReceivedText: {fileID: 1077562665}
+  hpLostText: {fileID: 1330538045}
 --- !u!1 &106726971
 GameObject:
   m_ObjectHideFlags: 0
@@ -965,7 +981,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &422192039
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1053,6 +1069,8 @@ MonoBehaviour:
   - {fileID: 622367796}
   zombiesStrength: {fileID: 1805443113}
   playerStatsSO: {fileID: 11400000, guid: a67a203074da7534fb6081afcd46db4b, type: 2}
+  winUIReference: {fileID: 897969675}
+  loseUIReference: {fileID: 18723463}
 --- !u!1 &437588167
 GameObject:
   m_ObjectHideFlags: 0
@@ -1533,7 +1551,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'You received attack damage: 10'
+  m_Text: 'Found equipment increases your attack damage: 100000'
 --- !u!222 &792074512
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1696,13 +1714,14 @@ GameObject:
   - component: {fileID: 897969672}
   - component: {fileID: 897969674}
   - component: {fileID: 897969673}
+  - component: {fileID: 897969675}
   m_Layer: 5
   m_Name: Win Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &897969672
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1765,6 +1784,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 897969671}
   m_CullTransparentMesh: 1
+--- !u!114 &897969675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897969671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc32c9dfe3432e24ead06a992a4c0be1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  locationNameTitle: {fileID: 144999031}
+  expReceivedText: {fileID: 394330334}
+  adReceivedText: {fileID: 792074511}
 --- !u!4 &914205449 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6031985302262943511, guid: 39276996dee121642b8bb3a1c6a503eb, type: 3}
@@ -2076,7 +2110,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 18
+    m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -2087,7 +2121,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'You received some experience: 10'
+  m_Text: 'You have learned valuable experience from your defeat: 500'
 --- !u!222 &1077562666
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2836,9 +2870,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIZombiesDetected, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 18723463}
+        m_TargetAssemblyTypeName: UILosePanel, Assembly-CSharp
+        m_MethodName: CloseAndContinue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3354,9 +3388,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIZombiesDetected, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 897969675}
+        m_TargetAssemblyTypeName: UIWinPanel, Assembly-CSharp
+        m_MethodName: CloseAndContinue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4625,6 +4659,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1246288743}
     m_Modifications:
+    - target: {fileID: 4348105832385229019, guid: 0b495247466853d4887cd9ae08ddcded, type: 3}
+      propertyPath: m_Size.x
+      value: 3.6247864
+      objectReference: {fileID: 0}
+    - target: {fileID: 4348105832385229019, guid: 0b495247466853d4887cd9ae08ddcded, type: 3}
+      propertyPath: m_Size.z
+      value: 1.7189789
+      objectReference: {fileID: 0}
+    - target: {fileID: 4348105832385229019, guid: 0b495247466853d4887cd9ae08ddcded, type: 3}
+      propertyPath: m_Center.x
+      value: 0.7723942
+      objectReference: {fileID: 0}
+    - target: {fileID: 4348105832385229019, guid: 0b495247466853d4887cd9ae08ddcded, type: 3}
+      propertyPath: m_Center.z
+      value: 0.022613525
+      objectReference: {fileID: 0}
     - target: {fileID: 4348105832385229020, guid: 0b495247466853d4887cd9ae08ddcded, type: 3}
       propertyPath: m_Name
       value: SurvivorsVillage

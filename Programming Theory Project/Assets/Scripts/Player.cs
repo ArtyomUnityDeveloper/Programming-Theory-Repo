@@ -23,6 +23,8 @@ public class Player : MonoBehaviour,
     private Location m_CurrentTransportTarget;
     private Location.InventoryEntry m_Transporting = new Location.InventoryEntry();
 
+    public PlayerParameters playerStatsSO;
+
     protected void Awake()
     {
         m_Agent = GetComponent<NavMeshAgent>();
@@ -124,6 +126,8 @@ public class Player : MonoBehaviour,
         GoTo(m_CurrentTransportTarget);
         m_Transporting.Count = 0;
         m_Transporting.ResourceId = "";
+
+        playerStatsSO.Health += 35;
     }
 
 

@@ -48,7 +48,7 @@ public class HostileLocation : Location,
     public override bool IsZombiesHere()
     {
 
-        if (amountOfZombies.Length > 0 && strengthOfZombies.Length > 0)
+        if (amountOfZombies.Length > 1 && strengthOfZombies.Length > 1)
         {
             //Debug.Log("Zombies is here");
             var uiZdInfo = gameObject.GetComponentInChildren<UIZombiesDetected.IUIZombiesDetectedContent>();
@@ -114,7 +114,8 @@ public class HostileLocation : Location,
 
     public string GetLocationTitle()
     {
-        return $"At Location " + gameObject.name + " zombies detected:";
+        return gameObject.name;
+        //return $"At Location " + gameObject.name + " zombies detected:";
     }
 
     public string[] GetZombiesInfo()
