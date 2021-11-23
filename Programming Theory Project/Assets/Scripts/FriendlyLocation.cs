@@ -18,4 +18,9 @@ public class FriendlyLocation : Location
     {
         Instance = this;
     }
+
+    public override string GetData()
+    {
+        return locationDescription;
+    }
 }

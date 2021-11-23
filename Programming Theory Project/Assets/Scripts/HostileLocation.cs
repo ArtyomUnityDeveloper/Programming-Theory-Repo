@@ -9,20 +9,94 @@ using UnityEngine;
 
 
 // INHERITANCE EXAMPLE
-public class HostileLocation : Location
+public class HostileLocation : Location, 
+    UIZombiesDetected.IUIZombiesDetectedContent
 {
     [Header ("Resources Info")]
     public ResourceItem[] items;
     public int[] numberOfItems;
 
-    [TextArea]
-    [SerializeField] private string locationDescription;
+
 
     [Header("3 zombies with strength 2, 4 zombies with strength 1, etc...")]
     public int[] amountOfZombies;
     public int[] strengthOfZombies;
 
+    public string[] zombiesInfo;
+
+    // ENCAPSULATION
+    public int totalStrength { get; private set; }
+    public int experienceForWin { get; private set; }
+
+
     private void Start()
+    {
+        FillHostileLocationInventory();
+        FillZombiesInfo();
+        CalculateStrength();
+        CalculateExperienceForWin();
+    }
+
+    private void CalculateExperienceForWin()
+    {
+        for (int i = 0; i < amountOfZombies.Length; i++)
+        {
+            experienceForWin += amountOfZombies[i] * strengthOfZombies[i] * 100;
+        }
+    }
+
+    public override bool IsZombiesHere()
+    {
+
+        if (amountOfZombies.Length > 1 && strengthOfZombies.Length > 1)
+        {
+            //Debug.Log("Zombies is here");
+            var uiZdInfo = gameObject.GetComponentInChildren<UIZombiesDetected.IUIZombiesDetectedContent>();
+            UIZombiesDetected.ZombiesDetectedInstance.SetNewHostileLocation(uiZdInfo);
+            return true;
+        }
+        else if (amountOfZombies.Length > 0 && strengthOfZombies.Length == 0)
+        {
+            Debug.LogError("Set zombies strength");
+            return false;
+        }
+        else if (amountOfZombies.Length == 0 && strengthOfZombies.Length > 0)
+        {
+            Debug.LogError("Set amount of zombies");
+            return false;
+        }
+        else if (amountOfZombies.Length <= 1 && strengthOfZombies.Length <= 1)
+        {
+            return false;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+
+    // ABSTRACTION
+    private void FillZombiesInfo()
+    {
+        for (int i = 0; i < amountOfZombies.Length; i++)
+        {
+            zombiesInfo[i] = amountOfZombies[i] + " zombies with strength " + strengthOfZombies[i];
+        }
+    }
+
+
+    private void CalculateStrength()
+    {
+        for (int i = 0; i < amountOfZombies.Length; i++)
+        {
+            totalStrength += amountOfZombies[i] * strengthOfZombies[i];
+        }
+    }
+
+
+    // ABSTRACTION
+    private void FillHostileLocationInventory()
     {
         int i = 0;
         foreach (ResourceItem item in items)
@@ -32,47 +106,37 @@ public class HostileLocation : Location
         }
     }
 
-    /* private float m_ProductionSpeed = 0.5f; // private backing field
-     public float ProductionSpeed // public property
-     {
-         get { return m_ProductionSpeed; } // getter returns backing field
-         set
-         {
-             {
-                 if (value < 0.0f)
-                 {
-
-                     Debug.LogError("You can't set a negative production speed!");
-                 }
-                 else
-                 {
-                     m_ProductionSpeed = value; // original setter now in if/else statement
-                 }
-             }
-         } // setter uses backing field
-     }
-
-     private float m_CurrentProduction = 0.0f;
-
-     private void Update()
-     {
-         if (m_CurrentProduction > 1.0f)
-         {
-             int amountToAdd = Mathf.FloorToInt(m_CurrentProduction);
-             int leftOver = AddItem(Item.Id, amountToAdd);
-
-             m_CurrentProduction = m_CurrentProduction - amountToAdd + leftOver;
-         }
-
-         if (m_CurrentProduction < 1.0f)
-         {
-             m_CurrentProduction += m_ProductionSpeed * Time.deltaTime;
-         }
-     } */
-
+    // POLYMORPHISM
     public override string GetData()
     {
-        //return $"Producing at the speed of {m_ProductionSpeed}/s";
         return locationDescription;
     }
+
+    public string GetLocationTitle()
+    {
+        return gameObject.name;
+        //return $"At Location " + gameObject.name + " zombies detected:";
+    }
+
+    public string[] GetZombiesInfo()
+    {
+        return zombiesInfo;
+    }
+
+    public int GetStrength()
+    {
+        return totalStrength;
+    }
+
+    public HostileLocation GetLocation()
+    {
+        return this;
+    }
+
+    public void KillZombies()
+    {
+        amountOfZombies = new int[] { 0 };
+        strengthOfZombies = new int[] { 0 };
+    }
 }
+

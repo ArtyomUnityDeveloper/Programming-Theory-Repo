@@ -19,6 +19,9 @@ public abstract class Location : MonoBehaviour,
         public int Count;
     }
 
+    [TextArea]
+    [SerializeField] protected string locationDescription;
+
     [Tooltip("-1 is infinite")]
     public int InventorySpace = -1;
 
@@ -94,5 +97,11 @@ public abstract class Location : MonoBehaviour,
     public void GetContent(ref List<InventoryEntry> content)
     {
         content.AddRange(m_Inventory);
+    }
+
+    // POLYMORPHISM
+    public virtual bool IsZombiesHere()
+    {
+        return false;
     }
 }

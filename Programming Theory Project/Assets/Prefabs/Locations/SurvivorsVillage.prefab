@@ -483,6 +483,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2b184d9c92fab54ba1f045bef4196b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  locationDescription: Far enough from the zombie hordes, and close enough to resource
+    locations, the Village of Survivors is your home. Here you can get treatment.
+    Resources need to be delivered here.
   InventorySpace: -1
 --- !u!1 &4348105832497826248
 GameObject:

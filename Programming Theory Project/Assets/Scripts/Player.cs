@@ -23,6 +23,8 @@ public class Player : MonoBehaviour,
     private Location m_CurrentTransportTarget;
     private Location.InventoryEntry m_Transporting = new Location.InventoryEntry();
 
+    public PlayerParameters playerStatsSO;
+
     protected void Awake()
     {
         m_Agent = GetComponent<NavMeshAgent>();
@@ -80,27 +82,72 @@ public class Player : MonoBehaviour,
     {
         if (m_Target == FriendlyLocation.Instance)
         {
-            //we arrive at the base, unload!
-            if (m_Transporting.Count > 0)
-                m_Target.AddItem(m_Transporting.ResourceId, m_Transporting.Count);
-
-            //we go back to the building we came from
-            GoTo(m_CurrentTransportTarget);
-            m_Transporting.Count = 0;
-            m_Transporting.ResourceId = "";
+            UnloadAtTheBaseAndBackToPreviousLocation();
         }
         else
         {
-            if (m_Target.Inventory.Count > 0)
-            {
-                m_Transporting.ResourceId = m_Target.Inventory[0].ResourceId;
-                m_Transporting.Count = m_Target.GetItem(m_Transporting.ResourceId, MaxAmountTransported);
-                m_CurrentTransportTarget = m_Target;
-                GoTo(FriendlyLocation.Instance);
-            }
+            CheckLocationForZombies();
+            // CheckTargetLocationInventoryAndTakeResources(); - method was here, now it called from CheckLocationForZombies()
         }
     }
 
+
+
+    // ABSTRACTION
+    private void CheckLocationForZombies()
+    {
+       if (m_Target.IsZombiesHere())
+        {
+            Debug.Log("Need to fight - zombies detected");
+        }
+       else if (m_Target.IsZombiesHere() == false)
+        {
+            Debug.Log("Location is clear - Player can loot it");
+            CheckTargetLocationInventoryAndTakeResources();
+        }
+       else
+        {
+            Debug.LogError("Cant check location for zombies");
+            return;
+        }
+    }
+
+
+
+
+    //ABSTRACTION
+    private void UnloadAtTheBaseAndBackToPreviousLocation()
+    {
+        //we arrive at the base, unload!
+        if (m_Transporting.Count > 0)
+            m_Target.AddItem(m_Transporting.ResourceId, m_Transporting.Count);
+
+        //we go back to the building we came from
+        GoTo(m_CurrentTransportTarget);
+        m_Transporting.Count = 0;
+        m_Transporting.ResourceId = "";
+
+        playerStatsSO.Health += 35;
+    }
+
+
+    //ABSTRACTION
+    private void CheckTargetLocationInventoryAndTakeResources()
+    {
+        if (m_Target.Inventory.Count > 0)
+        {
+            m_Transporting.ResourceId = m_Target.Inventory[0].ResourceId;
+            m_Transporting.Count = m_Target.GetItem(m_Transporting.ResourceId, MaxAmountTransported);
+            m_CurrentTransportTarget = m_Target;
+            GoTo(FriendlyLocation.Instance);
+        }
+    }
+
+    public void LeaveLocation()
+    {
+        m_Target = FriendlyLocation.Instance;
+        m_CurrentTransportTarget = m_Target;
+    }
 
 
     //Implementing the IUIInfoContent interface so the UI know it should display the UI when this is clicked on.
