@@ -20,8 +20,10 @@ public class HostileLocation : Location,
 
     [Header("3 zombies with strength 2, 4 zombies with strength 1, etc...")]
     public int[] amountOfZombies;
+    [Tooltip("Best array size is 3 because of code peculiarities")]
     public int[] strengthOfZombies;
 
+    [Tooltip("Set array size is 5 because of code peculiarities")]
     public string[] zombiesInfo;
 
     // ENCAPSULATION

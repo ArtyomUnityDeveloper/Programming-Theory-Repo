@@ -45,8 +45,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.97, y: 1, z: 6.32}
+  m_Center: {x: 0, y: 0.37, z: 0}
 --- !u!114 &1060624928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,8 +69,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0ed0ab28cf3054e498e90d0fb7bce7bb, type: 2}
   - {fileID: 11400000, guid: f4f96f9fbda8b5e49a1724684cfb3274, type: 2}
   numberOfItems: 64000000c8000000
-  amountOfZombies: 
-  strengthOfZombies: 0100000002000000
+  amountOfZombies: 0a0000000100000001000000
+  strengthOfZombies: 010000000200000006000000
+  zombiesInfo:
+  - 
+  - 
+  - 
+  - 
+  - 
 --- !u!1001 &7086404399596504580
 PrefabInstance:
   m_ObjectHideFlags: 0

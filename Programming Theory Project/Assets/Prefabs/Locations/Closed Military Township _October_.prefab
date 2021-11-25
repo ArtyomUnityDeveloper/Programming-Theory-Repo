@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3373862966667314823}
   - component: {fileID: 444846205299250996}
+  - component: {fileID: 1114669634}
   m_Layer: 0
   m_Name: Closed Military Township _October_
   m_TagString: Untagged
@@ -43,8 +44,38 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 3.49, y: 1, z: 6.1}
+  m_Center: {x: -0.67, y: 0.54, z: 1.25}
+--- !u!114 &1114669634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3373862966667314822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6b367ff83246f445968308f72a80092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  locationDescription: Once upon a time, families of military personnel lived here.
+    Those who survived say that a trucker brought the infection here, so now it is
+    full of the living dead.
+  InventorySpace: -1
+  items:
+  - {fileID: 11400000, guid: 0ed0ab28cf3054e498e90d0fb7bce7bb, type: 2}
+  - {fileID: 11400000, guid: a55654e87575aa54b9de74594b27c8a1, type: 2}
+  - {fileID: 11400000, guid: f08f0b4908bfa6c4ab477a0a93ab2701, type: 2}
+  - {fileID: 11400000, guid: f4f96f9fbda8b5e49a1724684cfb3274, type: 2}
+  numberOfItems: 500000001400000028000000c8000000
+  amountOfZombies: 140000001400000004000000
+  strengthOfZombies: 010000000200000005000000
+  zombiesInfo:
+  - 
+  - 
+  - 
+  - 
+  - 
 --- !u!1001 &3373862968228151887
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5471703334901844802}
   - component: {fileID: -4383701821168756357}
+  - component: {fileID: 1139683361}
   m_Layer: 0
   m_Name: Fuel and lubricants plant
   m_TagString: Untagged
@@ -49,8 +50,29 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 4, y: 1, z: 7.92}
+  m_Center: {x: -1.86, y: 0.48, z: -0.2}
+--- !u!114 &1139683361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5471703334901844803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6b367ff83246f445968308f72a80092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  locationDescription: Here the survivors regularly replenish their supplies of fuel.
+    Do not relax, because zombies like to hunt survivors inside the factory buildings.
+  InventorySpace: -1
+  items:
+  - {fileID: 11400000, guid: 9d1c576d10d40f74b9da837fd38997d5, type: 2}
+  numberOfItems: 401f0000
+  amountOfZombies: 010000000500000004000000
+  strengthOfZombies: 050000000300000005000000
+  zombiesInfo: []
 --- !u!1001 &5471703333719895714
 PrefabInstance:
   m_ObjectHideFlags: 0

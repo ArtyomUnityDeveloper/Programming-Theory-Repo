@@ -98,11 +98,12 @@ public class Player : MonoBehaviour,
     {
        if (m_Target.IsZombiesHere())
         {
-            Debug.Log("Need to fight - zombies detected");
+            //Debug.Log("Need to fight - zombies detected");
+            return;
         }
        else if (m_Target.IsZombiesHere() == false)
         {
-            Debug.Log("Location is clear - Player can loot it");
+            //Debug.Log("Location is clear - Player can loot it");
             CheckTargetLocationInventoryAndTakeResources();
         }
        else
