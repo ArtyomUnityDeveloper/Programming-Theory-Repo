@@ -105,6 +105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8945972429432956788}
   - component: {fileID: -8038363255741098958}
+  - component: {fileID: 156972357}
   m_Layer: 0
   m_Name: Military Plant
   m_TagString: Untagged
@@ -119,7 +120,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8945972429432956789}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 26.31, y: 0, z: -16.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -138,5 +139,33 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 4.81, y: 1, z: 5}
+  m_Center: {x: -2.84, y: 0.47, z: 0}
+--- !u!114 &156972357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8945972429432956789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6b367ff83246f445968308f72a80092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  locationDescription: The military plant was hit by bombs with a zombie virus. There
+    were a lot of people there. There is also quite a lot of valuable loot.
+  InventorySpace: -1
+  items:
+  - {fileID: 11400000, guid: 93745a2407548a54aaed01aa56723bce, type: 2}
+  - {fileID: 11400000, guid: d0ceca279b51d8c4d8eaf8763d518fed, type: 2}
+  - {fileID: 11400000, guid: 31495064e1084be458b7e5426f32efdd, type: 2}
+  numberOfItems: b004000070170000800c0000
+  amountOfZombies: 640000003200000002000000
+  strengthOfZombies: 010000000200000032000000
+  zombiesInfo:
+  - 
+  - 
+  - 
+  - 
+  - 

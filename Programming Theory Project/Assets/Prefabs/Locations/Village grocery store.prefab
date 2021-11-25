@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6351464659786929935}
   - component: {fileID: -8951507465392104636}
+  - component: {fileID: 955804473}
   m_Layer: 0
   m_Name: Abandoned village grocery store
   m_TagString: Untagged
@@ -43,8 +44,36 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 6.3, y: 1, z: 2.8}
+  m_Center: {x: -1.63, y: 0.42, z: 0}
+--- !u!114 &955804473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6351464659786929932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6b367ff83246f445968308f72a80092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  locationDescription: A group of physically strong bandits seized the grocery store
+    at the beginning of the disaster. They were selling overpriced food to other
+    survivors. But no one has heard of them for a month.
+  InventorySpace: -1
+  items:
+  - {fileID: 11400000, guid: f08f0b4908bfa6c4ab477a0a93ab2701, type: 2}
+  - {fileID: 11400000, guid: da4a9aeb922a52a4993e9e88697bc5a0, type: 2}
+  numberOfItems: b00400003c000000
+  amountOfZombies: 060000000500000006000000
+  strengthOfZombies: 0a0000000600000005000000
+  zombiesInfo:
+  - 
+  - 
+  - 
+  - 
+  - 
 --- !u!1001 &6351464660024084440
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1468,5 +1468,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 3
-  MaxAmountTransported: 20
+  MaxAmountTransported: 60
   playerStatsSO: {fileID: 11400000, guid: a67a203074da7534fb6081afcd46db4b, type: 2}

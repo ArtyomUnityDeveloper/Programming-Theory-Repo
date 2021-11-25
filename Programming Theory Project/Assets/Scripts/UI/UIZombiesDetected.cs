@@ -133,7 +133,7 @@ public class UIZombiesDetected : MonoBehaviour
     {
         // calculate reward
         int experienceReward = currentLocationZombiesStrenght * 100;
-        int attackDamageReward = 20;
+        int attackDamageReward = 30;
 
         // reward player
         playerStatsSO.Experience += experienceReward;

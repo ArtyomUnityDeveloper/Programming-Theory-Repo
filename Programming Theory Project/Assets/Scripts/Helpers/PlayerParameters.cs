@@ -23,7 +23,8 @@ public class PlayerParameters : ScriptableObject
                 Level = experience / 1000;
                 if (currentLevel < Level) // Increase AD every new LVL
                 {
-                    AttackDamage = AttackDamage + 1;
+                    int difference = Level - currentLevel;
+                    AttackDamage = AttackDamage + difference;
                 }
             }
             else

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2274189910705030875}
   - component: {fileID: -7915937455978424154}
+  - component: {fileID: 8888793589682513635}
   m_Layer: 0
   m_Name: Junkyard
   m_TagString: Untagged
@@ -50,8 +51,33 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 4.3, y: 1, z: 3.89}
+  m_Center: {x: 0, y: 0.43, z: 0}
+--- !u!114 &8888793589682513635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2274189910705030874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6b367ff83246f445968308f72a80092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  locationDescription: Luckily for you, the junkyard is full of scrap metal.
+  InventorySpace: -1
+  items:
+  - {fileID: 11400000, guid: d0ceca279b51d8c4d8eaf8763d518fed, type: 2}
+  numberOfItems: 87130000
+  amountOfZombies: 0a00000002000000
+  strengthOfZombies: 020000000a000000
+  zombiesInfo:
+  - 
+  - 
+  - 
+  - 
+  - 
 --- !u!1001 &2274189909887134670
 PrefabInstance:
   m_ObjectHideFlags: 0

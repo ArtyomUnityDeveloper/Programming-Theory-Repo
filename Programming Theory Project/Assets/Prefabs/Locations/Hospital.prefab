@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5183194603688427586}
   - component: {fileID: -624594863774202569}
+  - component: {fileID: 278349307}
   m_Layer: 0
   m_Name: Hospital
   m_TagString: Untagged
@@ -43,8 +44,34 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 6.08, y: 1, z: 7.46}
+  m_Center: {x: 1.01, y: 0.46, z: 2.02}
+--- !u!114 &278349307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5183194603688427585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6b367ff83246f445968308f72a80092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  locationDescription: Wounded, bitten, infected - everyone sought help in the hospital.
+    It's not hard to guess what it eventually turned into ...
+  InventorySpace: -1
+  items:
+  - {fileID: 11400000, guid: da4a9aeb922a52a4993e9e88697bc5a0, type: 2}
+  numberOfItems: 40060000
+  amountOfZombies: 320000000a0000000500000032000000
+  strengthOfZombies: 02000000050000000a00000001000000
+  zombiesInfo:
+  - 
+  - 
+  - 
+  - 
+  - 
 --- !u!1001 &5183194603002700110
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7207105096794261393}
   - component: {fileID: -4580504303890982945}
+  - component: {fileID: 1879940964}
   m_Layer: 0
   m_Name: Auto parts warehouse
   m_TagString: Untagged
@@ -24,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7207105096794261406}
-  m_LocalRotation: {x: -0, y: 0.42828676, z: -0, w: 0.9036429}
+  m_LocalRotation: {x: 0, y: 0.4282886, z: 0, w: 0.90364206}
   m_LocalPosition: {x: 5.96, y: 0, z: 14.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -43,8 +44,35 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 4, y: 1, z: 3.82}
+  m_Center: {x: -2.88, y: 0.46, z: 2.46}
+--- !u!114 &1879940964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7207105096794261406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6b367ff83246f445968308f72a80092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  locationDescription: An auto parts store is located close to a city that has suffered
+    massive biological weapons damage. It cannot be safe by definition.
+  InventorySpace: -1
+  items:
+  - {fileID: 11400000, guid: a55654e87575aa54b9de74594b27c8a1, type: 2}
+  - {fileID: 11400000, guid: 93745a2407548a54aaed01aa56723bce, type: 2}
+  numberOfItems: 3804000068010000
+  amountOfZombies: 2c0000000100000014000000
+  strengthOfZombies: 010000000600000005000000
+  zombiesInfo:
+  - 
+  - 
+  - 
+  - 
+  - 
 --- !u!1001 &7207105098538205200
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -5,11 +5,14 @@ using UnityEngine.UI;
 
 public class UIPlayerStats : MonoBehaviour
 {
+    [Tooltip("Starting player parameters are harcoded in the Start method in UIPlayerStats.cs")]
     public PlayerParameters playerStatsSO;
+
     public Text currentLevel;
     public Text expToNextLevel;
     public Text playerHp;
     public Text playerAttackDamage;
+    public GameObject gameOverPanel;
 
 
     // Start is called before the first frame update
@@ -18,11 +21,20 @@ public class UIPlayerStats : MonoBehaviour
         // Initial player stats on new game session
         playerStatsSO.Experience = 1050;
         playerStatsSO.Health = 100;
-        playerStatsSO.AttackDamage = 10; //20 is basic value
+        playerStatsSO.AttackDamage = 20; //20 is basic value
+        gameOverPanel.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
+    {
+        //TestPlayerStatsChange();
+
+        UpdatePlayerStatsOnScreen();
+        CheckForGameOver();
+    }
+
+ /*   private void TestPlayerStatsChange()
     {
         // Keys for test purposes
         if (Input.GetKeyDown("f"))
@@ -44,7 +56,25 @@ public class UIPlayerStats : MonoBehaviour
         {
             StartCoroutine("IncreaseAD");
         }
+    } */
 
+
+    // ABSTRACTION
+    private void CheckForGameOver()
+    {
+        if (playerStatsSO.Health == 0)
+        {
+            gameOverPanel.SetActive(true);
+            Time.timeScale = 0.0f;
+        }
+        else
+        {
+            return;
+        }
+    }
+
+    private void UpdatePlayerStatsOnScreen()
+    {
         currentLevel.text = playerStatsSO.Level.ToString();
         expToNextLevel.text = playerStatsSO.ExpToNextLvl.ToString();
         playerHp.text = playerStatsSO.Health.ToString();
@@ -52,7 +82,7 @@ public class UIPlayerStats : MonoBehaviour
     }
 
 
-    // Coroutines for test purposes
+ /*   // Coroutines for test purposes
     IEnumerator AddExp()
     {
         playerStatsSO.Experience += 200; 
@@ -75,5 +105,5 @@ public class UIPlayerStats : MonoBehaviour
     {
         playerStatsSO.AttackDamage += (1);
         yield return new WaitForSeconds(1f);
-    }
+    }                                               */
 }
