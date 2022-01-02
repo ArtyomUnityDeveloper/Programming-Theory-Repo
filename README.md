@@ -1,5 +1,5 @@
 # Programming-Theory-Repo
-submission 2 for jr programmer pathway
+My most complex project, OOP realized. Submission 2 for jr programmer pathway
 The final project was made for Unity Learn final submission. 
 OOP pillars are realized in the code of the project. 
 The game prototype is about fighting zombies and taking resources to the base. 
